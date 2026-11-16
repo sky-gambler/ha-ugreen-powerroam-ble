@@ -117,6 +117,8 @@ The unit doesn't report how much power flows into or out of the battery itself. 
 
 The unit's Bluetooth has no pairing, password or encryption. Anyone within range can read it and switch its outputs, with or without this integration. While Home Assistant holds the connection, nobody else can connect, the UGREEN app included; to use the app, disable the integration entry first.
 
+To report a vulnerability in the integration itself, see [SECURITY.md](SECURITY.md).
+
 ## Troubleshooting
 
 - **Diagnostics**: Settings → Devices & services → UGREEN PowerRoam (Bluetooth) → ⋮ → **Download diagnostics**. It counts reconnects and CRC failures and holds the last payload of every frame type. The Bluetooth address, the serial numbers and the MAC are left out, so the file is safe to attach to an issue.
