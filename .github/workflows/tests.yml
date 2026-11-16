@@ -1,7 +1,9 @@
 name: Tests
 
+# Branches other than main are checked through their pull request only.
 on:
   push:
+    branches: [main]
   pull_request:
   workflow_dispatch:
 
