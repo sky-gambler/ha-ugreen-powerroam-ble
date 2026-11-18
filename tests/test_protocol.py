@@ -150,7 +150,9 @@ def test_unknown_settings_are_refused(opcode: int, option: str) -> None:
 
 
 def test_dangerous_fields_are_not_writable() -> None:
-    for field in ("standby", "ac_frequency_hz", "warning_voice", "low_battery_warning"):
+    refused = ("standby", "ac_frequency_hz", "warning_voice", "low_battery_warning")
+    unconfirmed = ("battery_health", "key_voice")  # a GS1200 didn't apply these writes
+    for field in refused + unconfirmed:
         assert field not in protocol.WRITABLE_SWITCH_FIELDS
     assert protocol.WRITABLE_SWITCH_FIELDS.issubset(protocol.SWITCH_SEND_FIELDS)
 

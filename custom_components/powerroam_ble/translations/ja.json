@@ -111,6 +111,12 @@
       },
       "connected": {
         "name": "接続済み"
+      },
+      "battery_care": {
+        "name": "バッテリー保護"
+      },
+      "key_beep": {
+        "name": "操作音"
       }
     },
     "switch": {
@@ -129,14 +135,8 @@
       "u_turbo": {
         "name": "U-Turbo"
       },
-      "battery_care": {
-        "name": "バッテリー保護"
-      },
       "child_lock": {
         "name": "チャイルドロック"
-      },
-      "key_beep": {
-        "name": "操作音"
       }
     },
     "select": {

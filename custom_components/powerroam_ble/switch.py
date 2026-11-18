@@ -47,10 +47,7 @@ SWITCHES: tuple[PowerRoamSwitchDescription, ...] = (
     _output("usb_output", "usb"),
     _setting("quiet_mode", "low_noise"),
     _setting("u_turbo", "ac_uturbo"),
-    _setting("battery_care", "battery_health"),
     _setting("child_lock", "locking"),
-    # Inverted on the wire (0 = on); encode_switch_state handles it.
-    _setting("key_beep", "key_voice"),
 )
 
 

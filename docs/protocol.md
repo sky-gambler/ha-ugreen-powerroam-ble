@@ -69,9 +69,9 @@ The unit reports 12 fields and accepts 11: `low_battery_warning` (index 1 when r
 | 5 | 4 | `warning_voice` | No matching setting in the app; meaning unknown |
 | 6 | 5 | U-Turbo | Not inverted (checked; the reversing notes say otherwise) |
 | 7 | 6 | AC output | |
-| 8 | 7 | battery preservation (`battery_health`) | |
+| 8 | 7 | battery preservation (`battery_health`) | Read checked; a write didn't take effect on the GS1200, so the integration doesn't write it |
 | 9 | 8 | child safety lock | |
-| 10 | 9 | audio tones (`key_voice`) | **Inverted**: 0 = on |
+| 10 | 9 | audio tones (`key_voice`) | **Inverted**: 0 = on (read checked). A write didn't take effect on the GS1200, so the integration doesn't write it |
 | 11 | 10 | standby | Every output off; never written by this integration |
 
 ## Writes

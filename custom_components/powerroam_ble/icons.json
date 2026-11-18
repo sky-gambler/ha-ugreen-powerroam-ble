@@ -38,6 +38,15 @@
         "state": {
           "on": "mdi:power-sleep"
         }
+      },
+      "battery_care": {
+        "default": "mdi:battery-heart-variant"
+      },
+      "key_beep": {
+        "default": "mdi:volume-off",
+        "state": {
+          "on": "mdi:volume-high"
+        }
       }
     },
     "switch": {
@@ -53,19 +62,10 @@
           "on": "mdi:flash"
         }
       },
-      "battery_care": {
-        "default": "mdi:battery-heart-variant"
-      },
       "child_lock": {
         "default": "mdi:lock-open-variant-outline",
         "state": {
           "on": "mdi:lock-outline"
-        }
-      },
-      "key_beep": {
-        "default": "mdi:volume-off",
-        "state": {
-          "on": "mdi:volume-high"
         }
       }
     },

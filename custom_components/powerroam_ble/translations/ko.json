@@ -111,6 +111,12 @@
       },
       "connected": {
         "name": "연결됨"
+      },
+      "battery_care": {
+        "name": "배터리 보호"
+      },
+      "key_beep": {
+        "name": "알림음"
       }
     },
     "switch": {
@@ -129,14 +135,8 @@
       "u_turbo": {
         "name": "U-Turbo"
       },
-      "battery_care": {
-        "name": "배터리 보호"
-      },
       "child_lock": {
         "name": "어린이 보호 잠금"
-      },
-      "key_beep": {
-        "name": "알림음"
       }
     },
     "select": {

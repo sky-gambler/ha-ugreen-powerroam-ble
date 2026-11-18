@@ -111,6 +111,12 @@
       },
       "connected": {
         "name": "已连接"
+      },
+      "battery_care": {
+        "name": "电池保养"
+      },
+      "key_beep": {
+        "name": "提示音"
       }
     },
     "switch": {
@@ -129,14 +135,8 @@
       "u_turbo": {
         "name": "U-Turbo"
       },
-      "battery_care": {
-        "name": "电池保养"
-      },
       "child_lock": {
         "name": "儿童锁"
-      },
-      "key_beep": {
-        "name": "提示音"
       }
     },
     "select": {

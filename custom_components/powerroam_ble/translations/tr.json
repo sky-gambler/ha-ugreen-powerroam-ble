@@ -111,6 +111,12 @@
       },
       "connected": {
         "name": "Bağlı"
+      },
+      "battery_care": {
+        "name": "Pil koruma"
+      },
+      "key_beep": {
+        "name": "Sesli uyarılar"
       }
     },
     "switch": {
@@ -129,14 +135,8 @@
       "u_turbo": {
         "name": "U-Turbo"
       },
-      "battery_care": {
-        "name": "Pil koruma"
-      },
       "child_lock": {
         "name": "Çocuk kilidi"
-      },
-      "key_beep": {
-        "name": "Sesli uyarılar"
       }
     },
     "select": {

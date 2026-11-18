@@ -23,12 +23,14 @@ FAULT = BinarySensorEntityDescription(
 )
 
 # The 0x16 fields HA doesn't write (the outputs and the other settings are
-# switches, switch.py).
+# switches, switch.py). Battery preservation and audio tones are settings
+# too, but on a GS1200 a write to them didn't take effect, so they are only
+# shown.
 SETTINGS = tuple(
     BinarySensorEntityDescription(
         key=key, translation_key=key, entity_category=EntityCategory.DIAGNOSTIC
     )
-    for key in ("low_battery_warning", "standby")
+    for key in ("battery_care", "key_beep", "low_battery_warning", "standby")
 )
 
 CONNECTED = BinarySensorEntityDescription(
