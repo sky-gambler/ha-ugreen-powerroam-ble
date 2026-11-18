@@ -10,6 +10,16 @@ A local Home Assistant integration for UGREEN PowerRoam portable power stations.
 > [!NOTE]
 > This is an independent project. It is not made, endorsed or supported by UGREEN. "UGREEN" and "PowerRoam" are trademarks of their owner and are used here only to say which devices the integration works with.
 
+## Screenshots
+
+The device page of a GS1200 running on battery (dark theme):
+
+![Device page: Controls with the AC, DC and USB outputs and the light, Sensors with powers, battery, voltage, remaining times, energy, fault and mode, and recent activity](https://raw.githubusercontent.com/sky-gambler/ha-ugreen-powerroam-ble/main/docs/images/device-page.png)
+
+| Configuration | Diagnostic |
+|---|---|
+| ![Configuration: child safety lock, DC charging current, low battery alert level, operating mode, quiet mode and U-Turbo](https://raw.githubusercontent.com/sky-gambler/ha-ugreen-powerroam-ble/main/docs/images/configuration.png) | ![Diagnostic: AC frequency, audio tones, battery cycles and health, battery preservation, temperatures, capacity, cell voltage spread, connection, low battery warning and standby](https://raw.githubusercontent.com/sky-gambler/ha-ugreen-powerroam-ble/main/docs/images/diagnostics.png) |
+
 ## Supported models
 
 | Model | Status |
