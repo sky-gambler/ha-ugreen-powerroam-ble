@@ -111,6 +111,12 @@
       },
       "connected": {
         "name": "Conectado"
+      },
+      "battery_care": {
+        "name": "Conservación de la batería"
+      },
+      "key_beep": {
+        "name": "Tonos de audio"
       }
     },
     "switch": {
@@ -129,14 +135,8 @@
       "u_turbo": {
         "name": "U-Turbo"
       },
-      "battery_care": {
-        "name": "Conservación de la batería"
-      },
       "child_lock": {
         "name": "Bloqueo infantil"
-      },
-      "key_beep": {
-        "name": "Tonos de audio"
       }
     },
     "select": {

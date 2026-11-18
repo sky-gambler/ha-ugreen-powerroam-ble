@@ -2,7 +2,7 @@
 # not as a Python package.
 [project]
 name = "ha-ugreen-powerroam-ble"
-version = "1.0.0"
+version = "1.1.0"
 description = "Home Assistant integration for UGREEN PowerRoam power stations over Bluetooth LE"
 requires-python = ">=3.13"
 license = "MIT"

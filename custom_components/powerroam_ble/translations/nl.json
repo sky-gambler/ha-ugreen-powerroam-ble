@@ -111,6 +111,12 @@
       },
       "connected": {
         "name": "Verbonden"
+      },
+      "battery_care": {
+        "name": "Accubehoud"
+      },
+      "key_beep": {
+        "name": "Geluidssignalen"
       }
     },
     "switch": {
@@ -129,14 +135,8 @@
       "u_turbo": {
         "name": "U-Turbo"
       },
-      "battery_care": {
-        "name": "Accubehoud"
-      },
       "child_lock": {
         "name": "Kinderslot"
-      },
-      "key_beep": {
-        "name": "Geluidssignalen"
       }
     },
     "select": {

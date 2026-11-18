@@ -45,9 +45,7 @@ def device(hass: HomeAssistant) -> PowerRoamBle:
         ("usb", "usb_output"),
         ("low_noise", "quiet_mode"),
         ("ac_uturbo", "u_turbo"),
-        ("battery_health", "battery_care"),
         ("locking", "child_lock"),
-        ("key_voice", "key_beep"),  # inverted on the wire
     ],
 )
 async def test_switch_changes_only_its_field(device: PowerRoamBle, field: str, key: str) -> None:
@@ -85,7 +83,15 @@ async def test_settings_cycle(device: PowerRoamBle, opcode: int, options: tuple[
         assert [cmd for cmd, _ in unit.writes] == [opcode] * len(options)
 
 
-REFUSED = ["standby", "ac_frequency_hz", "warning_voice", "low_battery_warning"]
+REFUSED = [
+    "standby",
+    "ac_frequency_hz",
+    "warning_voice",
+    "low_battery_warning",
+    # Settings whose write didn't take effect on a GS1200.
+    "battery_health",
+    "key_voice",
+]
 
 
 @pytest.mark.parametrize("field", REFUSED)

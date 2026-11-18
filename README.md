@@ -14,7 +14,7 @@ A local Home Assistant integration for UGREEN PowerRoam portable power stations.
 
 | Model | Status |
 |---|---|
-| **PowerRoam 1200 (GS1200)** | Tested: every value checked against the UGREEN app, every control tried on the unit; two controls don't take effect yet (see [Known issues](#known-issues)). |
+| **PowerRoam 1200 (GS1200)** | Tested: every value checked against the UGREEN app, every control tried on the unit. |
 | Other PowerRoam models that advertise as `ugreen gs…` | Likely to work (the protocol is shared), untested. Mode, Battery power and Energy remaining need the model's capacity and appear only for the GS1200 until someone reports another model. |
 
 Have another model? Please [open a model report](https://github.com/sky-gambler/ha-ugreen-powerroam-ble/issues/new?template=new_model.yml) with a diagnostics file.
@@ -68,6 +68,7 @@ Entity names below are the English ones; the integration is translated into 16 l
 | Entity | Notes |
 |---|---|
 | Fault | On when the unit's fault frame holds any non-zero byte. Its bits aren't mapped yet. |
+| Battery preservation, Audio tones | Diagnostic, read-only. These are settings, but a write to them didn't take effect on the GS1200, so they aren't controls until one is confirmed on a unit. |
 | Low battery warning, Standby | Diagnostic, read-only. |
 | Connected | Whether the Bluetooth link is up right now. |
 
@@ -76,7 +77,7 @@ Entity names below are the English ones; the integration is translated into 16 l
 | Entity | Type |
 |---|---|
 | AC output, DC output, USB output | Switch |
-| Quiet mode, U-Turbo, Battery preservation, Child safety lock, Audio tones | Switch (configuration); Battery preservation and Audio tones don't work yet, see [Known issues](#known-issues) |
+| Quiet mode, U-Turbo, Child safety lock | Switch (configuration) |
 | Light | Select: Off, Low, High, Strobe, SOS |
 | Operating mode | Select: Standard (5 h), Eco (2 h), Always on (configuration) |
 | DC charging current | Select: 4 A, 6 A, 8 A (configuration) |
@@ -86,13 +87,14 @@ Entity names below are the English ones; the integration is translated into 16 l
 
 Every change waits for the unit's next report of the current state, builds the write on that report (never on an older copy), sends it, and then waits up to 5 seconds for the unit to report the change. If there is no Bluetooth link, no report, no confirmation, or if any other setting moves at the same time, the action fails with an error and nothing is retried.
 
-The outputs and the five configuration switches share one settings block that the unit only accepts as a whole, and whose layout differs from the one it reports. The integration therefore always decodes it into named fields and encodes it again; it never echoes raw bytes back.
+The outputs and the three configuration switches share one settings block that the unit only accepts as a whole, and whose layout differs from the one it reports. The integration therefore always decodes it into named fields and encodes it again; it never echoes raw bytes back.
 
 Never written, by design:
 
 - **Standby**: it turns every output off, and the unit may stop answering over Bluetooth until its button is pressed.
 - **AC frequency**: a wrong value (60 Hz) can harm connected devices.
 - **Low battery warning**: a status the unit reports; it has no place in a write.
+- **Battery preservation** and **Audio tones**: a write to them didn't take effect on the GS1200. They are shown read-only and come back as controls only once a write is confirmed on a unit.
 - Firmware update and self-test commands.
 
 ## How some values are worked out
@@ -104,7 +106,6 @@ The unit doesn't report how much power flows into or out of the battery itself. 
 
 ## Known issues
 
-- **Audio tones** and **Battery preservation** show the right state, but switching them from Home Assistant doesn't take effect on the GS1200 yet. Being investigated; the other controls work.
 - **Fault** turns on for any non-zero fault byte; what each bit means is still unknown.
 
 ## Range and reliability
@@ -137,7 +138,7 @@ To report a vulnerability in the integration itself, see [SECURITY.md](SECURITY.
 
 This integration was written with [Claude Code](https://claude.com/claude-code), Anthropic's AI coding agent, working with the maintainer. Claude Code did the protocol reverse engineering and wrote the code, the tests, this documentation and the translations. It started from [tanka8/ugreen-powerroam](https://github.com/tanka8/ugreen-powerroam), cross-checked the frames against [proam-cli](https://github.com/ilya-zlobintsev/proam-cli) and [powerroam-tui](https://github.com/axodentally/powerroam-tui), and mapped the remaining fields by comparing the unit's raw frames, captured through the diagnostics download, with what the UGREEN app showed at the same moment.
 
-The maintainer ran every step on a real GS1200. Each decoded value was compared with the app or the unit's screen, and every control was tried on the unit; the two that don't work yet are listed under [Known issues](#known-issues). What hasn't been checked that way is marked as such in [docs/protocol.md](docs/protocol.md). The translations are machine-made; corrections from native speakers are welcome.
+The maintainer ran every step on a real GS1200. Each decoded value was compared with the app or the unit's screen, and every control was tried on the unit, and the two settings whose write didn't take effect are shown read-only. What hasn't been checked that way is marked as such in [docs/protocol.md](docs/protocol.md). The translations are machine-made; corrections from native speakers are welcome.
 
 ## Credits
 

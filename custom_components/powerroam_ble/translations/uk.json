@@ -111,6 +111,12 @@
       },
       "connected": {
         "name": "Підключено"
+      },
+      "battery_care": {
+        "name": "Збереження батареї"
+      },
+      "key_beep": {
+        "name": "Звукові сигнали"
       }
     },
     "switch": {
@@ -129,14 +135,8 @@
       "u_turbo": {
         "name": "U-Turbo"
       },
-      "battery_care": {
-        "name": "Збереження батареї"
-      },
       "child_lock": {
         "name": "Захист від дітей"
-      },
-      "key_beep": {
-        "name": "Звукові сигнали"
       }
     },
     "select": {

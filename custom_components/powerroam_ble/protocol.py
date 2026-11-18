@@ -90,13 +90,13 @@ INVERTED_FIELDS = frozenset({"key_voice"})
 RAW_FIELDS = frozenset({"ac_frequency_hz"})
 
 SWITCH_OUTPUT_KEYS = {"usb": "usb_output", "dc": "dc_output", "ac": "ac_output"}
-# The 0x16 fields HA may change. Never standby (every output off, and the
-# unit may stop answering until its button is pressed), ac_frequency_hz
-# (60 Hz can harm devices), low_battery_warning (no slot in a write), or
-# warning_voice (no such setting in the app, meaning unknown).
-WRITABLE_SWITCH_FIELDS = frozenset(
-    {"ac", "dc", "usb", "low_noise", "ac_uturbo", "battery_health", "locking", "key_voice"}
-)
+# The 0x16 fields HA may change: only those whose write is confirmed on a
+# unit. Never standby (every output off, and the unit may stop answering
+# until its button is pressed), ac_frequency_hz (60 Hz can harm devices),
+# low_battery_warning (no slot in a write) or warning_voice (no such setting
+# in the app). battery_health and key_voice stay read-only: on a GS1200 a
+# write to them didn't take effect.
+WRITABLE_SWITCH_FIELDS = frozenset({"ac", "dc", "usb", "low_noise", "ac_uturbo", "locking"})
 # The rest of the block, shown read-only; checked against the app on a
 # GS1200: U-Turbo is not inverted, the app's "Audio tones" is key_voice.
 # warning_voice has no setting in the app and stays out. low_battery_warning

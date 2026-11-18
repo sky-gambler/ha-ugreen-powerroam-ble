@@ -65,9 +65,12 @@ async def test_entities_named_from_translations(
     assert hass.states.get(f"sensor.{PREFIX}_battery_voltage").state == "27.6"
     assert hass.states.get(f"sensor.{PREFIX}_mode").state == "charging"
     assert hass.states.get(f"sensor.{PREFIX}_discharge_time_remaining").state == "unknown"
-    assert hass.states.get(f"switch.{PREFIX}_audio_tones").state == STATE_ON
     assert hass.states.get(f"switch.{PREFIX}_child_safety_lock").state == STATE_ON
-    assert hass.states.get(f"switch.{PREFIX}_battery_preservation").state == STATE_OFF
+    # Read-only until their write is confirmed on a unit.
+    assert hass.states.get(f"binary_sensor.{PREFIX}_audio_tones").state == STATE_ON
+    assert hass.states.get(f"binary_sensor.{PREFIX}_battery_preservation").state == STATE_OFF
+    assert hass.states.get(f"switch.{PREFIX}_audio_tones") is None
+    assert hass.states.get(f"switch.{PREFIX}_battery_preservation") is None
     light = hass.states.get(f"select.{PREFIX}_light")
     assert light.state == "off"
     assert light.attributes["options"] == ["off", "low", "high", "strobe", "sos"]
@@ -83,10 +86,10 @@ async def test_switch_action_writes_and_confirms(
     monkeypatch.setattr(ble, "SWITCH_CONFIRM_WAIT", 1.0)
     async with FakeUnit(entry.runtime_data) as unit:
         await hass.services.async_call(
-            "switch", "turn_off", {"entity_id": f"switch.{PREFIX}_audio_tones"}, blocking=True
+            "switch", "turn_off", {"entity_id": f"switch.{PREFIX}_quiet_mode"}, blocking=True
         )
         assert len(unit.writes) == 1
-        assert hass.states.get(f"switch.{PREFIX}_audio_tones").state == STATE_OFF
+        assert hass.states.get(f"switch.{PREFIX}_quiet_mode").state == STATE_OFF
 
         await hass.services.async_call(
             "select",
